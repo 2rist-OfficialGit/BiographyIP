@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BiographyIP.Models
 {
-    internal class ModelDataIP
+    public class ModelDataIP
     {
         public string ip { get; set; } = string.Empty;
         public string city { get; set; } = string.Empty;

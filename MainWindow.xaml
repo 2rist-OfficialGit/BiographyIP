@@ -5,32 +5,121 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiographyIP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="600">
-    <Grid>
+        Title="IP Biography" 
+        Height="425" 
+        Width="400"
+        WindowStartupLocation="CenterScreen"
+        
+        Background="#F5F5F5">
+
+    <Grid Margin="15">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <WrapPanel Grid.Row="0"
-                   Margin="10 5 10 0"
-                   VerticalAlignment="Center"
-                   Orientation="Horizontal">
-            <TextBox x:Name="IPtxt"
-                     Text="0.0.0.0"
-                     Width="150"/>
-            <Button x:Name="CheckIp"
-                    Margin="20 0 0 0"
-                    Content="Проверить IP"
-                    Click="CheckIp_Click"/>
-        </WrapPanel>
 
-        <Border Grid.Row="2"
-                BorderThickness="1.5"
-                BorderBrush="DarkGray"
-                CornerRadius="15"
-                Margin="10 0 10 10">
-            <TextBlock x:Name="ListResult" Margin="10"/>
+        <Border Grid.Row="0"
+                Background="White"
+                CornerRadius="8"
+                Padding="10"
+                BorderBrush="LightGray"
+                BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="IPtxt"
+                         Text="0.0.0.0"
+                         Height="30"
+                         VerticalContentAlignment="Center"
+                         FontSize="14"
+                         BorderBrush="LightGray"
+                         BorderThickness="1"
+                         Padding="8,0"
+                         Background="#FAFAFA"/>
+
+                <Button x:Name="CheckIp"
+                        Grid.Column="1"
+                        Margin="10 0 0 0"
+                        Content="Проверить"
+                        Height="30"
+                        Width="110"
+                        Background="#2196F3"
+                        Foreground="White"
+                        FontWeight="SemiBold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="CheckIp_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </Border>
+
+        <TextBlock Grid.Row="1"
+                   Margin="5 8 5 0"
+                   FontSize="11"
+                   Foreground="Gray"
+                   FontStyle="Italic"
+                   Text="При отправке 0.0.0.0 будет выполнен запрос вашего IP-адреса"
+                   TextWrapping="Wrap"/>
+
+        <Border Grid.Row="3"
+                Background="White"
+                CornerRadius="8"
+                Padding="0"
+                BorderBrush="LightGray"
+                BorderThickness="1">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="105"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="IP" FontWeight="Bold" VerticalAlignment="Center" Margin="10,8" FontSize="13" Grid.Row="0" Grid.Column="0"/>
+                <TextBlock Text="Country" FontWeight="Bold" VerticalAlignment="Center" Margin="10,8" FontSize="13" Grid.Row="1" Grid.Column="0"/>
+                <TextBlock Text="City" FontWeight="Bold" VerticalAlignment="Center" Margin="10,8" FontSize="13" Grid.Row="2" Grid.Column="0"/>
+                <TextBlock Text="Region" FontWeight="Bold" VerticalAlignment="Center" Margin="10,8" FontSize="13" Grid.Row="3" Grid.Column="0"/>
+                <TextBlock Text="Location" FontWeight="Bold" VerticalAlignment="Center" Margin="10,8" FontSize="13" Grid.Row="4" Grid.Column="0"/>
+                <TextBlock Text="Organization" FontWeight="Bold" VerticalAlignment="Center" Margin="10,8" FontSize="13" Grid.Row="5" Grid.Column="0"/>
+                <TextBlock Text="Postal" FontWeight="Bold" VerticalAlignment="Center" Margin="10,8" FontSize="13" Grid.Row="6" Grid.Column="0"/>
+                <TextBlock Text="Timezone" FontWeight="Bold" VerticalAlignment="Center" Margin="10,8" FontSize="13" Grid.Row="7" Grid.Column="0"/>
+
+                <TextBlock Text="{Binding ip, TargetNullValue=—, FallbackValue=—}" 
+                               VerticalAlignment="Center" Margin="12,8" FontSize="13" Foreground="#333333" Grid.Column="1" Grid.Row="0"/>
+                <TextBlock Text="{Binding country, TargetNullValue=—, FallbackValue=—}" 
+                               VerticalAlignment="Center" Margin="12,8" FontSize="13" Foreground="#333333" Grid.Column="1" Grid.Row="1"/>
+                <TextBlock Text="{Binding city, TargetNullValue=—, FallbackValue=—}" 
+                               VerticalAlignment="Center" Margin="12,8" FontSize="13" Foreground="#333333" Grid.Column="1" Grid.Row="2"/>
+                <TextBlock Text="{Binding region, TargetNullValue=—, FallbackValue=—}" 
+                               VerticalAlignment="Center" Margin="12,8" FontSize="13" Foreground="#333333" Grid.Column="1" Grid.Row="3"/>
+                <TextBlock Text="{Binding loc, TargetNullValue=—, FallbackValue=—}" 
+                               VerticalAlignment="Center" Margin="12,8" FontSize="13" Foreground="#333333" Grid.Column="1" Grid.Row="4"/>
+                <TextBlock Text="{Binding org, TargetNullValue=—, FallbackValue=—}" 
+                               VerticalAlignment="Center" Margin="12,8" FontSize="13" Foreground="#333333" Grid.Column="1" Grid.Row="5"/>
+                <TextBlock Text="{Binding postal, TargetNullValue=—, FallbackValue=—}" 
+                               VerticalAlignment="Center" Margin="12,8" FontSize="13" Foreground="#333333" Grid.Column="1" Grid.Row="6"/>
+                <TextBlock Text="{Binding timezone, TargetNullValue=—, FallbackValue=—}" 
+                               VerticalAlignment="Center" Margin="12,8" FontSize="13" Foreground="#333333" Grid.Column="1" Grid.Row="7"/>
+            </Grid>
         </Border>
     </Grid>
 </Window>

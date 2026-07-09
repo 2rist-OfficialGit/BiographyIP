@@ -24,15 +24,7 @@ namespace BiographyIP.Services
         {
             try
             {
-                string url = "";
-                if(String.IsNullOrEmpty(ip))
-                {
-                    url = $"{UrlIP}/{ip}/geo";
-                }
-                else
-                {
-                    url = $"{UrlIP}/{ip}/json";
-                }
+                string url = String.IsNullOrEmpty(ip) ? $"{UrlIP}/{ip}/geo" : $"{UrlIP}/{ip}/json";
                 var resultApi = await _httpClient.GetAsync(url);
                 if(resultApi.IsSuccessStatusCode)
                 {

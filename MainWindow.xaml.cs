@@ -23,9 +23,13 @@ namespace BiographyIP
     public partial class MainWindow : Window
     {
         private readonly ServiceInfoIP _serviceInfoIP;
+        public ModelDataIP SetIpData { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            this.ResizeMode = ResizeMode.CanMinimize;
+            SetIpData = new ModelDataIP();
             _serviceInfoIP = new ServiceInfoIP();
         }
 
@@ -34,8 +38,8 @@ namespace BiographyIP
         {
             try
             {
-                ModelDataIP result = await _serviceInfoIP.GetModelDataIPAsync(ip);
-                ListResult.Text = result.city;
+                SetIpData = await _serviceInfoIP.GetModelDataIPAsync(ip);
+                DataContext = SetIpData;
             }
             catch (Exception ex)
             {
@@ -45,7 +49,10 @@ namespace BiographyIP
 
         private void CheckIp_Click(object sender, RoutedEventArgs e)
         {
-            LoadIp(IPtxt.Text);
+            string IPforAPI = IPtxt.Text;
+            if (IPforAPI == "0.0.0.0")
+                IPforAPI = "";
+            LoadIp(IPforAPI);
         }
     }
 }
